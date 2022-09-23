@@ -12,7 +12,7 @@ const supabase = createClient(supabaseUrl, supabaseKey)
 /**
  * Function to get the data from one card
  * 
- * @param {*} id the id form a card
+ * @param {*} id the id of a card
  * @returns card data
  */
 export async function getCardData(id) {
@@ -31,30 +31,6 @@ export async function getCardData(id) {
     if (error) console.log('query error', error);
     else return data;
 }
-
-/**
- * Function to write a specific appointment
- * @param {*} card 
- * @returns 
- */
- export async function setCardData(card) {
-  // find the id
-  const deckId = await getDeck(card.getDeck)
-  console.log('deckId', deckId[0].id);
-  const { data, error } = await supabase.from('cards').insert([
-    {
-      question: card.question,
-      answer: card.answer,
-      deck: deckId[0].id, 
-    },
-  ]);
-  if (error) console.log('Error', error);
-  else return data;
-}
-
-
-
-
 
 /**
  * Function to get the data from one card
@@ -77,20 +53,4 @@ export async function getCardData(id) {
     const { data, error } = await supabase.from('decks').select('*');
     if (error) console.log('query error', error);
     else return data;
-}
-
-/**
- * Function to write a specific appointment
- * @param {*} card 
- * @returns 
- */
- export async function setDeckData(card) {
-  // find the id
-  const { data, error } = await supabase.from('decks').insert([
-    {
-      name: card.name,
-    },
-  ]);
-  if (error) console.log('Error', error);
-  else return data;
 }
