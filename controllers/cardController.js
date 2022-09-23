@@ -31,7 +31,7 @@ import {
   
   export async function setCard(req, res) {
     const card = {};
-    if (req.body.pet && req.body.timeslot && req.body.date) {
+    if (req.body.question && req.body.answer && req.body.deck) {
       card.question = req.body.question;
       card.answer = req.body.answer;
       card.deck = req.body.deck;
@@ -52,7 +52,7 @@ import {
       res.status(422);
       res.json({
         title: 'cannot add card',
-        message: `You need to set client, date and time`,
+        message: `You need to set question, answer and deck`,
       });
     }
   }

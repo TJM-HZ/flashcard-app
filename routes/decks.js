@@ -1,9 +1,13 @@
 import express from 'express';
 const router = express.Router();
 
-router.get("/", (req, res) => {
-    res.send("Deck list")
-});
+import {
+    getDecks,
+    setDeck,
+    getDeck,
+  } from '../controllers/deckController.js';
+
+router.get("/", getDecks);
 
 router.get("/new", (req, res) => {
     res.send("New deck form")
@@ -15,20 +19,16 @@ router.post("/", (req, res) => {
 
 router
     .route("/:id")
-    .get((req, res) => {
-        res.send(`Get deck with ID ${req.params.id}`)
-    })
-    .put((req, res) => {
-        res.send(`Update deck with ID ${req.params.id}`)
-    })
-    .delete((req, res) => {
-        res.send(`Delete deck with ID ${req.params.id}`)
-    })
+    .get(getDeck)
+    .put(setDeck)
+    // .delete((req, res) => {
+    //     res.send(`Delete deck with ID ${req.params.id}`)
+    // })
 
 router.param("id", (req, res, next, id) => {
     console.log(id)
 })
 
+let decksRouter = router
+export default decksRouter;
 
-
-export { router as decksRouter};

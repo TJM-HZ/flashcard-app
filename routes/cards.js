@@ -1,9 +1,13 @@
 import express from 'express';
 const router = express.Router();
 
-router.get("/", (req, res) => {
-    res.send("Card list")
-});
+import {
+    getCards,
+    setCard,
+    getCard,
+  } from '../controllers/cardController.js';
+
+router.get("/", getCards);
 
 router.get("/new", (req, res) => {
     res.send("New card form")
@@ -15,18 +19,15 @@ router.post("/", (req, res) => {
 
 router
     .route("/:id")
-    .get((req, res) => {
-        res.send(`Get card with ID ${req.params.id}`)
-    })
-    .put((req, res) => {
-        res.send(`Update card with ID ${req.params.id}`)
-    })
-    .delete((req, res) => {
-        res.send(`Delete card with ID ${req.params.id}`)
-    })
+    .get(getCard)
+    .put(setCard)
+    // .delete((req, res) => {
+    //     res.send(`Delete card with ID ${req.params.id}`)
+    // })
 
 router.param("id", (req, res, next, id) => {
     console.log(id)
 })
 
-export { router as cardsRouter};
+let cardsRouter = router
+export default cardsRouter;
