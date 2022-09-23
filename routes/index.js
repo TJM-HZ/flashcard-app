@@ -5,7 +5,7 @@ router.get('/', (req, res) => {
     res.json('Welcome to flashyflash')
 })
 
-export default router
+export {router as indexRouter}
 
 
 

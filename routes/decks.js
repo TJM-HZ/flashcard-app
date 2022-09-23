@@ -17,18 +17,20 @@ router.post("/", (req, res) => {
     res.send("Create deck")
 });
 
-router
-    .route("/:id")
-    .get(getDeck)
-    .put(setDeck)
-    // .delete((req, res) => {
-    //     res.send(`Delete deck with ID ${req.params.id}`)
-    // })
+
+router.get("/:id", getDeck);
+
+// router
+//     .route("/:id")
+//     .get(getDeck)
+//     .put(setDeck)
+//     // .delete((req, res) => {
+//     //     res.send(`Delete deck with ID ${req.params.id}`)
+//     // })
 
 router.param("id", (req, res, next, id) => {
     console.log(id)
 })
 
-let decksRouter = router
-export default decksRouter;
+export {router as decksRouter};
 

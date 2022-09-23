@@ -5,6 +5,7 @@ import {
   } from '../adapters/supabaseAdapter.js';
   
   export async function getCard(req, res) {
+    console.log('getCard'); // TODO getCard isn't called
     const rows = await getCardData(req.params.id);
     res.json(rows);
   }

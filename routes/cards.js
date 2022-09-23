@@ -1,4 +1,5 @@
 import express from 'express';
+import cors from 'cors';
 const router = express.Router();
 
 import {
@@ -17,17 +18,18 @@ router.post("/", (req, res) => {
     res.send("Create card")
 });
 
-router
-    .route("/:id")
-    .get(getCard)
-    .put(setCard)
-    // .delete((req, res) => {
-    //     res.send(`Delete card with ID ${req.params.id}`)
-    // })
+router.get('/:id', getCard);
+
+// router
+//     .route("/:id")
+//     .get(getCard)
+//     .put(setCard)
+//     // .delete((req, res) => {
+//     //     res.send(`Delete card with ID ${req.params.id}`)
+//     // })
 
 router.param("id", (req, res, next, id) => {
     console.log(id)
 })
 
-let cardsRouter = router
-export default cardsRouter;
+export {router as cardsRouter};
