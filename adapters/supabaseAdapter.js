@@ -30,10 +30,10 @@ export async function getCardData(id) {
 }
 
 /**
- * Function to get the data from one card
+ * Function to get the data of one deck
  * 
- * @param {*} id the id form a card
- * @returns card data
+ * @param {*} id the id of a deck
+ * @returns deck data
  */
  export async function getDeckData(id) {
   console.log('Look for id:', id);
@@ -43,8 +43,8 @@ export async function getCardData(id) {
 }
 
 /**
- * function to read all the cards
- * @returns an array of cards
+ * function to read all the decks
+ * @returns an array of decks
  */
  export async function getDecksData() {
     const { data, error } = await supabase.from('decks').select('*');
