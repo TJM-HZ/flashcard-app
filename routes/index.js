@@ -2,7 +2,7 @@ import express from 'express';
 const router = express.Router();
 
 router.get('/', (req, res) => {
-    res.json('Welcome to flashyflash')
+    res.json('Welcome to the Flashcard App')
 })
 
 export {router as indexRouter}

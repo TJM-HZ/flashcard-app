@@ -2,9 +2,6 @@ import * as dotenv from 'dotenv';
 import { createClient } from '@supabase/supabase-js';
 dotenv.config({ path: 'variables.env' });
 
-//TODO: to improve this code, you might consider working with models as well. A model is then a representation of a resource.
-//TODO: write some generic select, update, delete code to improve the code. However, do not write your own framework ☺️
-
 const supabaseUrl = process.env.SUPABASE_URL
 const supabaseKey = process.env.SUPABASE_KEY
 const supabase = createClient(supabaseUrl, supabaseKey)
